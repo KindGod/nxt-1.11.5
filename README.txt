@@ -1,83 +1,83 @@
-Running the Nxt software:
+运行Nxt软件：
 
-Dependencies: Java 8 or later needs to be installed first. Oracle JVM gives
-better performance and has been more tested, but OpenJDK is also supported.
-
-
-Using the installer:
-
-An IzPack based installation package is provided. Click on the corresponding
-jar/exe/dmg package, or run "java -jar nxt-client.jar" to start the
-installer. See https://bitbucket.org/JeanLucPicard/nxt/issues/283 for more
-details about the IzPack installer. After installation, use the shortcuts or
-desktop icons to start the Nxt server.
+依赖关系：需要首先安装Java 8或更高版本。 Oracle JVM给出
+更好的性能和更多的测试，但也支持OpenJDK。
 
 
-Using the nxt-client.zip package:
+使用安装程序：
 
-Unpack the nxt-client.zip package and open a shell in the resulting nxt
-directory. Execute the run.sh or start.sh script if using Linux or BSD, run.bat
-if using Windows, or run.command if using Mac.
-
-On Unix, the run.sh script must be run from within the installation directory,
-and uses this directory to search for configuration files, store logs, and for
-the nxt_db blockchain database. The start.sh script can be run from any
-directory, it starts the java process in the background and uses ~/.nxt for
-configuration files, logs, and the nxt_db database. Unlike run.sh, start.sh
-uses desktop mode, creating a desktop tray icon and opening the JavaFX UI if
-supported.
-
-The initialization takes a few seconds. When it is ready, you should see the
-message "Nxt server 1.x.x started successfully" in the console log. If run in
-desktop mode, a JavaFX window will open automatically. Otherwise, open a
-browser, without stopping the java process, and go to http://localhost:7876 ,
-where the Nxt UI should now be available.
-
-To stop the application, type Ctrl-C inside the console window, or use the
-stop.sh script if started with start.sh.
-
-Warning: It is better to use only latin characters and no spaces in the path
-to the Nxt installation directory, as the use of special characters may result
-in permissions denied error in the browser, which is a known jetty issue.
+提供了基于IzPack的安装包。点击相应的
+jar / exe / dmg包，或者运行“java -jar nxt-client.jar”启动
+安装程序。有关更多信息，请参阅https://bitbucket.org/JeanLucPicard/nxt/issues/283
+关于IzPack安装程序的详细信息。安装后，使用快捷方式或
+桌面图标启动Nxt服务器。
 
 
-Customization:
+使用nxt-client.zip包：
 
-There are many configuration parameters that could be changed, but the defaults
-are set so that normally you can run the program immediately after unpacking,
-without any additional configuration. To see what options are there, open the
-conf/nxt-default.properties file. All possible settings are listed, with
-detailed explanation. If you decide to change any setting, do not edit
-nxt-default.properties directly, but create a new conf/nxt.properties file
-and only add to it the properties that need to be different from the default
-values. You do not need to delete the defaults from nxt-default.properties, the
-settings in nxt.properties override those in nxt-default.properties. This way,
-when upgrading the software, you can safely overwrite nxt-default.properties
-with the updated file from the new package, while your customizations remain
-safe in the nxt.properties file.
+打开nxt-client.zip包的包装，并在结果的nxt中打开一个shell
+目录。如果使用Linux或BSD run.bat，请执行run.sh或start.sh脚本
+如果使用Windows或run.command如果使用Mac。
+
+在Unix上，run.sh脚本必须从安装目录中运行，
+并使用此目录搜索配置文件，存储日志和for
+nxt_db块链接数据库。 start.sh脚本可以从任何一个运行
+目录，它在后台启动java进程，并使用〜/ .nxt
+配置文件，日志和nxt_db数据库。不像run.sh，start.sh
+使用桌面模式，创建桌面托盘图标并打开JavaFX UI
+支持的。
+
+初始化需要几秒钟。当它准备好了，你应该看到
+控制台日志中的消息“Nxt server 1.x.x started successfully”。如果运行
+桌面模式下，JavaFX窗口将自动打开。否则，打开一个
+浏览器，不停止java进程，并转到http：// localhost：7876，
+Nxt UI现在应该可用。
+
+要停止应用程序，请在控制台窗口中键入Ctrl-C，或使用
+stop.sh脚本，如果以start.sh开头。
+
+警告：最好只使用拉丁字符，而不使用路径中的空格
+到Nxt安装目录，因为可能会导致使用特殊字符
+在权限中拒绝浏览器中的错误，这是一个已知的码头问题。
 
 
-How to contribute?
+定制：
 
-There are many ways to contribute to Nxt. Here are some examples:
+有许多可以更改的配置参数，但是默认值
+设置为通常您可以在拆包后立即运行程序，
+没有任何额外的配置。要查看有什么选项，请打开
+conf / nxt-default.properties文件。列出所有可能的设置
+详细说明。如果您决定更改任何设置，请勿编辑
+nxt-default.properties直接，但创建一个新的conf / nxt.properties文件
+并且只添加与默认值不同的属性
+值。您不需要从nxt-default.properties中删除默认值
+nxt.properties中的设置会覆盖nxt-default.properties中的设置。这条路，
+升级软件时，您可以安全地覆盖nxt-default.properties
+使用新包中的更新文件，而您的自定义仍然保留
+在nxt.properties文件中安全。
 
- * create pull requests
- * review pull requests
- * review existing code
- * create issues (aka feature ideas, bug reports, documentation etc.)
- * answer issues
+
+如何贡献？
+
+有很多方法为Nxt贡献。这里有些例子：
+
+ *创建拉请求
+ *审查拉请求
+ *审查现有的代码
+ *创建问题（又名特征想法，错误报告，文档等）
+ *回答问题
 
 
-Technical details:
+技术细节：
 
-The Nxt software is a client-server application. It consists of a java server
-process, the one started by the run.sh script, and a javascript user interface
-run in a browser. A JavaFX UI is also available and starts automatically on
-supported configurations. To run a node, forge, update the blockchain, interact
-with peers, only the java process needs to be running, so you could logout and
-close the browser but keep the java process running. If you want to keep
-forging, make sure you do not click on "stop forging" when logging out. You can
-also just close the browser without logging out.
+Nxt软件是一个客户端 - 服务器应用程序。它由一个java服务器组成
+进程，由run.sh脚本启动，一个javascript用户界面
+在浏览器中运行JavaFX UI也可以自动启动
+支持的配置。运行节点，伪造，更新块链，进行交互
+与同行，只有java进程需要运行，所以你可以注销和
+关闭浏览器，但保持java进程运行。如果你想保持
+锻造时，请注意在注销时不要点击“停止锻造”。您可以
+也只是关闭浏览器而不注销。
 
 The java process communicates with peers on port 7874 tcp by default. If you are
 behind a router or a firewall and want to have your node accept incoming peer
